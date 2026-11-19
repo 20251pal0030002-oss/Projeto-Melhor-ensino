@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melhor Estudo — Portal Solidário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topo">
+        <div class="logo" onclick="irParaPasso(1)">
+            <span class="material-symbols-outlined" style="color: var(--vinho); font-size: 28px;">menu_book</span>
+            <div>
+                <span class="logo-titulo">Melhor Estudo</span>
+                <span class="logo-sub">Portal Solidário</span>
+            </div>
+        </div>
+        <div class="indicador-passo" id="indicador-topo">
+            Passo 1/10 — Início & Pitch
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="cartao" id="passo-1">
+            <div class="cabecalho-secao">
+                <span class="etiqueta">Educação Aberta & Solidária</span>
+                <h1>Nenhum aluno deve ficar sem material escolar.</h1>
+                <p>O <strong>Melhor Estudo</strong> conecta doadores diretamente a escolas públicas mapeadas no Brasil.</p>
+            </div>
+
+            <div class="grade-2">
+                <div class="bloco">
+                    <span class="etiqueta">Pitch do Idealizador</span>
+                    <h2 style="font-family: 'Playfair Display', serif; color: var(--vinho); margin-bottom: 8px;">
+                        Nossa Missão
+                    </h2>
+                    <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 10px;">
+                        “Muitas escolas públicas fora dos grandes centros têm alunos dedicados, mas sem o básico na mochila. Aqui você escolhe a escola real, monta o kit e acompanha a entrega até a sala de aula.”
+                    </p>
+                    <p style="font-weight: 700; color: var(--vinho); font-size: 0.88rem;">
+                        — Pietro Emanuel, Idealizador do Projeto
+                    </p>
+                </div>
+
+                <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 14px;">
+                    <div class="grade-2">
+                        <div class="bloco" style="text-align: center;">
+                            <strong style="font-size: 1.5rem; color: var(--vinho);">100%</strong>
+                            <p style="font-size: 0.82rem; color: var(--texto-suave);">Rastreio com nota fiscal e comprovante</p>
+                        </div>
+                        <div class="bloco" style="text-align: center;">
+                            <strong style="font-size: 1.5rem; color: var(--vinho);">5 Regiões</strong>
+                            <p style="font-size: 0.82rem; color: var(--texto-suave);">Escolas públicas mapeadas</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button type="button" class="btn btn-vinho btn-largo" onclick="irParaPasso(2)">Iniciar Jornada Solidária →</button>
+                        <button type="button" class="btn btn-borda btn-largo" onclick="irParaPasso(10)">Ver Prestação de Contas (Passo 10)</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cartao cartao-pequeno escondido" id="passo-2">
+            <div class="abas">
+                <button type="button" class="aba-btn ativa" id="btn-entrar" onclick="trocarAbaLogin('entrar')">Entrar</button>
+                <button type="button" class="aba-btn" id="btn-cadastrar" onclick="trocarAbaLogin('cadastrar')">Cadastrar</button>
+            </div>
+
+            <div class="cabecalho-secao" style="text-align: center;">
+                <h1 id="titulo-form">Acesso ao Portal</h1>
+                <p>Entre para apoiar uma escola ou cadastrar necessidades.</p>
+            </div>
+
+            <form onsubmit="enviarLogin(event)">
+                <div class="campo escondido" id="box-nome">
+                    <label for="nome-usuario">Seu Nome</label>
+                    <input type="text" id="nome-usuario" placeholder="Ex.: João Silva">
+                </div>
+
+                <div class="campo">
+                    <label for="perfil-usuario">Tipo de Perfil</label>
+                    <select id="perfil-usuario">
+                        <option value="Doador">Doador Solidário</option>
+                        <option value="Gestor Escolar">Gestor / Professor Escolar</option>
+                        <option value="Voluntário">Voluntário</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="email-usuario">E-mail</label>
+                    <input type="email" id="email-usuario" placeholder="seuemail@exemplo.com" required>
+                </div>
+
+                <div class="campo">
+                    <label for="senha-usuario">Senha</label>
+                    <input type="password" id="senha-usuario" placeholder="••••••" minlength="4" required>
+                </div>
+
+                <button type="submit" class="btn btn-vinho btn-largo">Entrar e Escolher Região →</button>
+            </form>
+
+            <div class="rodape-acoes">
+                <button type="button" class="btn btn-borda" onclick="irParaPasso(1)">← Voltar</button>
+            </div>
+        </section>
+
+        <section class="cartao escondido" id="passo-3">
+            <div class="cabecalho-secao">
+                <h1>Selecione a Região</h1>
+                <p>Clique no mapa ou escolha uma região abaixo para filtrar as escolas.</p>
+            </div>
+
+            <div class="grade-2" style="align-items: center;">
+                <div class="bloco" style="text-align: center;">
+                    <p style="font-size: 0.85rem; font-weight: 700; color: var(--vinho); margin-bottom: 10px;">
+                        Mapa Interativo do Brasil
+                    </p>
+                    <svg viewBox="0 0 320 300" style="max-width: 260px; width: 100%;">
+                        <path d="M55,35 L155,25 L175,95 L95,115 L40,85 Z" fill="#701625" stroke="#FBF7EE" stroke-width="2" style="cursor:pointer" onclick="escolherRegiao('Norte')"/>
+                        <text x="92" y="75" fill="#FFF" font-size="12" font-weight="bold">NORTE</text>
+
+                        <path d="M175,55 L265,65 L275,135 L195,145 L175,95 Z" fill="#8E1C30" stroke="#FBF7EE" stroke-width="2" style="cursor:pointer" onclick="escolherRegiao('Nordeste')"/>
+                        <text x="195" y="105" fill="#FFF" font-size="12" font-weight="bold">NORDESTE</text>
+
+                        <path d="M95,115 L175,95 L195,165 L125,185 L95,155 Z" fill="#A33243" stroke="#FBF7EE" stroke-width="2" style="cursor:pointer" onclick="escolherRegiao('Centro-Oeste')"/>
+                        <text x="110" y="148" fill="#FFF" font-size="11" font-weight="bold">C-OESTE</text>
+
+                        <path d="M175,145 L245,140 L235,205 L165,205 Z" fill="#C8963E" stroke="#FBF7EE" stroke-width="2" style="cursor:pointer" onclick="escolherRegiao('Sudeste')"/>
+                        <text x="176" y="178" fill="#261418" font-size="11" font-weight="bold">SUDESTE</text>
+
+                        <path d="M135,205 L195,205 L175,275 L125,255 Z" fill="#4A0B17" stroke="#FBF7EE" stroke-width="2" style="cursor:pointer" onclick="escolherRegiao('Sul')"/>
+                        <text x="145" y="242" fill="#FFF" font-size="12" font-weight="bold">SUL</text>
+                    </svg>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 10px;" id="opcoes-regiao"></div>
+            </div>
+
+            <div class="rodape-acoes">
+                <button type="button" class="btn btn-borda" onclick="irParaPasso(2)">← Voltar</button>
+                <button type="button" class="btn btn-vinho" onclick="irParaPasso(4)">
+                    Ver Escolas (<span id="texto-regiao">Todas</span>) →
+                </button>
+            </div>
+        </section>
+
+        <section class="cartao escondido" id="passo-4">
+            <div class="cabecalho-secao" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <h1>Catálogo de Escolas (<span id="nome-filtro">Todas</span>)</h1>
+                    <p>Escolha uma escola para ver o raio-x completo ou cadastre uma nova.</p>
+                </div>
+                <button type="button" class="btn btn-dourado" onclick="irParaPasso(6)">+ Cadastrar Nova Escola</button>
+            </div>
+
+            <div class="grade-3" id="lista-escolas"></div>
+
+            <div class="rodape-acoes">
+                <button type="button" class="btn btn-borda" onclick="irParaPasso(3)">← Trocar Região</button>
+            </div>
+        </section>
+
+        <section class="cartao escondido" id="passo-5">
+            <div id="conteudo-escola"></div>
+        </section>
+
+        <section class="cartao escondido" id="passo-6">
+            <div class="cabecalho-secao">
+                <h1>Divulgação & Cadastro de Nova Escola</h1>
+                <p>Preencha os dados da escola pública para abrir uma campanha de kits escolares.</p>
+            </div>
+
+            <form onsubmit="salvarNovaEscola(event)">
+                <div class="grade-2">
+                    <div class="campo">
+                        <label for="nome-escola">Nome da Escola</label>
+                        <input type="text" id="nome-escola" placeholder="Ex.: E.M. Monteiro Lobato" required>
+                    </div>
+                    <div class="campo">
+                        <label for="cidade-escola">Cidade - UF</label>
+                        <input type="text" id="cidade-escola" placeholder="Ex.: Curitiba - PR" required>
+                    </div>
+                </div>
+
+                <div class="grade-3">
+                    <div class="campo">
+                        <label for="regiao-escola">Região</label>
+                        <select id="regiao-escola">
+                            <option value="Sul">Sul</option>
+                            <option value="Sudeste">Sudeste</option>
+                            <option value="Nordeste">Nordeste</option>
+                            <option value="Norte">Norte</option>
+                            <option value="Centro-Oeste">Centro-Oeste</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="alunos-escola">Quantidade de Alunos</label>
+                        <input type="number" id="alunos-escola" value="200" min="10" required>
+                    </div>
+                    <div class="campo">
+                        <label for="meta-escola">Meta de Kits</label>
+                        <input type="number" id="meta-escola" value="80" min="10" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="desc-escola">Descrição das Necessidades</label>
+                    <textarea id="desc-escola" rows="3" placeholder="Explique quais materiais os alunos mais precisam..." required></textarea>
+                </div>
+
+                <div class="rodape-acoes">
+                    <button type="button" class="btn btn-borda" onclick="irParaPasso(4)">← Cancelar</button>
+                    <button type="submit" class="btn btn-vinho">Salvar e Ir para Doação →</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="cartao escondido" id="passo-7">
+            <div class="cabecalho-secao">
+                <span class="etiqueta">Escola Escolhida: <strong id="escola-destino"></strong></span>
+                <h1>Escolha o Kit & Escreva uma Cartinha</h1>
+                <p>Selecione o tipo de apoio e deixe uma mensagem de incentivo para o estudante.</p>
+            </div>
+
+            <div class="grade-3" id="opcoes-kits"></div>
+
+            <div class="bloco" style="margin-top: 16px;">
+                <label for="texto-cartinha" style="display:block; font-weight:700; margin-bottom:6px;">
+                    Cartinha de Incentivo (opcional):
+                </label>
+                <textarea id="texto-cartinha" rows="3" placeholder="Ex.: Bons estudos! Acredite no seu potencial!"></textarea>
+            </div>
+
+            <div class="rodape-acoes">
+                <button type="button" class="btn btn-borda" onclick="irParaPasso(5)">← Voltar</button>
+                <button type="button" class="btn btn-vinho" onclick="irParaPagamento()">
+                    Ir para Pagamento (R$ <span id="preco-selecionado">45</span>,00) →
+                </button>
+            </div>
+        </section>
+
+        <section class="cartao escondido" id="passo-8">
+            <div class="cabecalho-secao">
+                <h1>Pagamento & Transparência</h1>
+                <p>Confira o resumo da sua doação e a destinação exata do valor.</p>
+            </div>
+
+            <div class="grade-2">
+                <div class="bloco">
+                    <h3 style="color:var(--vinho); margin-bottom:10px;">Resumo da Doação</h3>
+                    <p style="margin-bottom:6px;"><strong>Escola:</strong> <span id="pag-escola"></span></p>
+                    <p style="margin-bottom:6px;"><strong>Kit:</strong> <span id="pag-kit"></span></p>
+                    <p style="font-size:1.2rem; color:var(--vinho); font-weight:700; margin:12px 0;">
+                        Total: R$ <span id="pag-valor"></span>,00
+                    </p>
+                    <hr style="border:none; border-top:1px solid var(--borda); margin:10px 0;">
+                    <p style="font-size:0.82rem; color:var(--texto-suave);">
+                        • 92% Compra direta dos materiais<br>
+                        • 8% Transporte até a escola<br>
+                        • 0% Taxa administrativa
+                    </p>
+                </div>
+
+                <div class="bloco" style="text-align: center;">
+                    <span class="etiqueta">Pagamento via Pix</span>
+                    <h3 style="color:var(--vinho); margin-bottom:10px;">Chave Pix Solidária</h3>
+                    <input type="text" readonly value="doacao@melhorestudosolidario.org.br" style="text-align:center; margin-bottom:12px;">
+                    <button type="button" class="btn btn-vinho btn-largo" onclick="confirmarPagamento()">
+                        Confirmar Pagamento →
+                    </button>
+                </div>
+            </div>
+
+            <div class="rodape-acoes">
+                <button type="button" class="btn btn-borda" onclick="irParaPasso(7)">← Voltar</button>
+            </div>
+        </section>
+
+        <section class="cartao cartao-pequeno escondido" id="passo-9" style="max-width: 560px;">
+            <div class="cabecalho-secao" style="text-align: center;">
+                <span class="etiqueta">Pagamento Aprovado</span>
+                <h1>Doação Confirmada!</h1>
+                <p>Seu recibo social foi gerado com sucesso.</p>
+            </div>
+
+            <div class="bloco" id="dados-recibo"></div>
+
+            <div class="rodape-acoes">
+                <button type="button" class="btn btn-borda" onclick="window.print()">Imprimir Recibo</button>
+                <button type="button" class="btn btn-vinho" onclick="irParaPasso(10)">Acompanhar Entrega (Passo 10) →</button>
+            </div>
+        </section>
+
+        <section class="cartao escondido" id="passo-10">
+            <div class="cabecalho-secao">
+                <h1>Rastreio dos Kits & Prestação de Contas</h1>
+                <p>Acompanhe o andamento da sua entrega e consulte os lotes já finalizados.</p>
+            </div>
+
+            <div class="grade-2">
+                <div class="bloco">
+                    <span class="etiqueta" id="tag-protocolo">Protocolo #ME-202601</span>
+                    <h3 style="color:var(--vinho); margin-bottom:10px;">Andamento do Seu Pedido</h3>
+                    <p style="margin-bottom:8px;">✅ <strong>1. Pagamento Confirmado</strong></p>
+                    <p style="margin-bottom:8px;">✅ <strong>2. Compra dos Materiais & Cartinha Impressa</strong></p>
+                    <p style="margin-bottom:8px; color:var(--vinho);">🚚 <strong>3. Em Transporte para a Escola</strong></p>
+                    <p style="color:var(--texto-suave);">⬜ 4. Entrega aos Alunos e Foto Comprobatória</p>
+                </div>
+
+                <div class="bloco">
+                    <h3 style="color:var(--vinho); margin-bottom:10px;">Prestação de Contas Aberta</h3>
+                    <p style="font-size:0.86rem; margin-bottom:8px;">• <strong>Lote #041 (Palmas - PR):</strong> 84 kits entregues — NF-e #4892</p>
+                    <p style="font-size:0.86rem; margin-bottom:8px;">• <strong>Lote #040 (Caruaru - PE):</strong> 118 kits entregues — NF-e #4850</p>
+                    <p style="font-size:0.86rem;">• <strong>Lote #039 (Santarém - PA):</strong> 76 kits entregues — NF-e #4811</p>
+                </div>
+            </div>
+
+            <div class="rodape-acoes">
+                <button type="button" class="btn btn-borda" onclick="irParaPasso(4)">Apoiar Outra Escola</button>
+                <button type="button" class="btn btn-vinho" onclick="irParaPasso(1)">Voltar ao Início (1/10)</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="rodape-site">© 2026 Melhor Estudo — Portal Solidário</footer>
+    <script src="script.js"></script>
+</body>
+</html>
